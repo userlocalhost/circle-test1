@@ -1,0 +1,15 @@
+---
+test:
+  override:
+    - echo ${CIRCLE_PROJECT_REPONAME}
+    - cd ~/circle-test1
+    - ~/circle-test1/bin/test.sh hoge
+    - cd ~/circle-test1/tmp01
+    - ~/circle-test1/bin/test.sh hoge
+    - cd ~/${CIRCLE_PROJECT_REPONAME}/tmp01; ~/circle-test1/bin/test.sh hoge
+
+deployment:
+  index:
+    branch: /.*/
+    commands:
+      - ~/circle-test1/bin/deployment
